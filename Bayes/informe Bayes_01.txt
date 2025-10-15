@@ -1,0 +1,62 @@
+INFORME DEL SCRIPT: CLASIFICADOR DE NOTICIAS (REAL VS FAKE)
+
+¿QUÉ HACE ESTE CÓDIGO?
+
+Este script entrena un modelo de machine learning para detectar si una
+noticia es real o falsa, usando ejemplos de texto ya etiquetados.
+
+Después de entrenar el modelo, lo pone a prueba y lo usa para predecir
+la veracidad de nuevas noticias.
+
+¿CÓMO FUNCIONA?
+
+- Se arma un DataFrame con noticias y su etiqueta correspondiente:
+  'real' o 'fake'.
+
+- Se separan las características (el texto) y las etiquetas (real/fake).
+
+- Se vectoriza el texto con CountVectorizer, que convierte las palabras
+  en números para que el modelo pueda trabajar con ellas.
+
+- Se divide el dataset en dos partes: entrenamiento (80%) y prueba (20%).
+
+- Se entrena un modelo Naive Bayes (MultinomialNB), que es ideal para
+  clasificación de texto.
+
+- Se hacen predicciones sobre el conjunto de prueba y se evalúa el
+  rendimiento con dos métricas:
+  - Precisión (accuracy)
+  - Matriz de confusión
+
+- Finalmente, se le dan dos noticias nuevas al modelo para ver qué
+  etiqueta les asigna.
+
+RESULTADOS DEL MODELO:
+
+Evaluación del modelo
+Precisión: 1.00
+Matriz de confusión:
+[[1 0]
+ [0 1]]
+
+Predicciones para nuevas noticias:
+• Noticia: 'Nuevo estudio demuestra que el café mejora la memoria' → Predicción: real
+• Noticia: 'Expertos afirman que los gatos pueden hablar con humanos' → Predicción: fake
+
+OBSERVACIONES:
+
+- El modelo tuvo precisión perfecta en el conjunto de prueba, pero ojo:
+  el dataset es chico y artificial, así que no hay que confiarse.
+
+- Las reglas que aprende el modelo dependen de los ejemplos que le das.
+  Si el dataset está sesgado o es limitado, el modelo también lo estará.
+
+- Para usar esto en producción, habría que entrenarlo con miles de
+  noticias reales y falsas, bien curadas.
+
+- También se podría probar con otros modelos, como SVM o Random Forest,
+  y comparar resultados.
+
+- Sería útil guardar el modelo entrenado para usarlo más adelante sin
+  tener que volver a entrenarlo cada vez.
+
