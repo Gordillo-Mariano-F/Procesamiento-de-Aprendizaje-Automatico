@@ -1,0 +1,45 @@
+INFORME DEL SCRIPT: CLASIFICACIÓN DE ACCIONES DE USUARIOS
+
+¿QUÉ HACE ESTE CÓDIGO?
+
+Este script toma datos de usuarios que realizaron distintas acciones
+en un juego (combate, exploración, interacción social), y según cuánto
+tiempo estuvieron en cada actividad, les asigna un resultado.
+
+Sirve para transformar datos en algo más interpretativo.
+
+¿CÓMO FUNCIONA?
+
+- Se arma un DataFrame con tres columnas: Usuario, Acción y Duración.
+
+- Se define una función llamada clasificar_accion() que analiza cada
+  fila y devuelve un resultado según estas reglas:
+
+  - Interacción Social de al menos 180 segundos → “Mensaje Enviado”
+  - Exploración de al menos 300 segundos → “Descubrimiento”
+  - Combate de al menos 120 segundos → “Victoria”
+  - Todo lo demás → “Derrota”
+
+- Se aplica esa función a cada fila y se agrega una nueva columna
+  llamada Resultado.
+
+RESULTADO FINAL:
+
+Usuario         Accion              Duración    Resultado
+user1           Combate             120         Victoria
+user2           Exploración         300         Descubrimiento
+user3           Interaccion Social  180         Mensaje Enviado
+user4           Combate              90         Derrota
+user5           Exploración         240         Derrota
+
+OBSERVACIONES:
+
+- Las reglas están bien claras, pero si el juego cambia o se agregan
+  nuevas acciones, habría que actualizar la función.
+
+- Si esto se integra en un sistema más grande, conviene modularizarlo
+  más.
+
+- Si el DataFrame viene de un archivo CSV real, habría que agregar
+  validaciones (tipo: ¿existe el archivo?, ¿las columnas están bien?,
+  etc.).
