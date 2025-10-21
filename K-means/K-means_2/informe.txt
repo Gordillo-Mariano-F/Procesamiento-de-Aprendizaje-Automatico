@@ -1,0 +1,56 @@
+INFORME DE CLUSTERING DE ESTUDIANTES UNIVERSITARIOS
+----------------------------------------------------
+
+ OBJETIVO DEL PROGRAMA:
+Agrupar estudiantes en 4 segmentos según:
+- Edad
+- Horas de estudio semanales
+- Promedio académico
+
+ MÉTODO UTILIZADO:
+Algoritmo de clustering K-Means con datos estandarizados.
+
+ CENTROIDES DE LOS CLUSTERS:
+(Valores promedio por grupo)
+
+Cluster 0:
+Edad: 25.33
+Horas de estudio: 12.33
+Promedio académico: 8.46
+
+Cluster 1:
+Edad: 51.16
+Horas de estudio: 4.11
+Promedio académico: 7.83
+
+Cluster 2:
+Edad: 39.75
+Horas de estudio: 7.33
+Promedio académico: 5.18
+
+Cluster 3:
+Edad: 28.25
+Horas de estudio: 11.88
+Promedio académico: 2.47
+
+ DISTRIBUCIÓN DE ESTUDIANTES POR CLUSTER:
+
+Cluster 0 →  3 estudiantes  
+Cluster 1 → 19 estudiantes  
+Cluster 2 → 12 estudiantes  
+Cluster 3 → 16 estudiantes  
+
+🔹 EJEMPLO DE CLASIFICACIÓN (primeros 5 estudiantes):
+
+Edad | Horas | Promedio | Cluster
+----------------------------------
+ 42  |   2   |   8.87   |   1
+ 26  |   8   |   9.11   |   0
+ 56  |   5   |   7.29   |   1
+ 29  |  14   |   7.27   |   0
+ 43  |   8   |   8.50   |   1
+
+ VISUALIZACIÓN:
+Se generó un gráfico de dispersión 2D (Edad vs Promedio Académico)
+con colores diferenciados por cluster.
+

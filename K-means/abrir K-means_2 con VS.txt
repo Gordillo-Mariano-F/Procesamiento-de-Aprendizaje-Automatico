@@ -1,0 +1,1 @@
+abrir K-means_2 con VS
