@@ -1,0 +1,33 @@
+INFORME DE Árbol de decisión 
+
+1. OBJETIVO
+Determinar qué atributos del conjunto de datos tienen mayor capacidad de predicción sobre la variable objetivo Acepta (respuesta del cliente), utilizando entropía y ganancia de información como métricas.
+
+2. DATOS ANALIZADOS
+Se analizaron 10 registros con las siguientes variables:
+- Edad
+- UsoGB (consumo de datos móviles)
+- LíneaFija (Sí o No)
+- Acepta (Sí o No)
+
+3. ENTROPÍA DEL CONJUNTO ORIGINAL
+Clientes que aceptan: 5
+Clientes que no aceptan: 5
+Entropía total: 1.0000
+
+4. GANANCIA DE INFORMACIÓN POR ATRIBUTO
+
+Edad (agrupada en rangos: Joven, Adulto, Mayor)
+Ganancia: 0.1709
+
+Línea Fija
+Ganancia: 0.3219
+
+Uso de Datos (agrupado en Bajo, Medio, Alto)
+Ganancia: 0.1245
+
+5. CONCLUSIÓN
+El atributo más informativo es Línea Fija, con una ganancia de 0.3219.
+Esto indica que los clientes con línea fija tienen mayor probabilidad de aceptar la oferta.
+
+FIN DEL INFORME
