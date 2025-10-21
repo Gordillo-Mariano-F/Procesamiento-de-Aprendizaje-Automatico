@@ -1,33 +1,46 @@
-INFORME DE Árbol de decisión 
+INFORME: Árbol de decisión para predicción de aceptación de oferta
 
-1. OBJETIVO
-Determinar qué atributos del conjunto de datos tienen mayor capacidad de predicción sobre la variable objetivo Acepta (respuesta del cliente), utilizando entropía y ganancia de información como métricas.
+Empresa: Telecomunicaciones
+Objetivo: Predecir si un cliente aceptará una oferta de plan de datos móviles.
 
-2. DATOS ANALIZADOS
-Se analizaron 10 registros con las siguientes variables:
-- Edad
-- UsoGB (consumo de datos móviles)
-- LíneaFija (Sí o No)
-- Acepta (Sí o No)
+Conjunto de datos:
+Se dispone de información de 10 clientes con los siguientes atributos:
+- Edad (en años)
+- Nivel de uso mensual de datos (en GB)
+- Tiene línea fija (Sí / No)
+- Aceptó la oferta (Sí / No)
 
-3. ENTROPÍA DEL CONJUNTO ORIGINAL
-Clientes que aceptan: 5
-Clientes que no aceptan: 5
-Entropía total: 1.0000
+1. ENTROPÍA DEL CONJUNTO ORIGINAL
+Se calculó la entropía del conjunto completo considerando:
+- Positivos (Sí): 5
+- Negativos (No): 5
+Resultado:
+- Entropía total = 1.0000
 
-4. GANANCIA DE INFORMACIÓN POR ATRIBUTO
+2. GANANCIA DE INFORMACIÓN POR ATRIBUTO
 
-Edad (agrupada en rangos: Joven, Adulto, Mayor)
-Ganancia: 0.1709
+a) Edad (agrupada en rangos: Joven ≤30, Adulto 31–50, Mayor >50)
+- Ganancia de información: 0.1245
 
-Línea Fija
-Ganancia: 0.3219
+b) Tiene línea fija
+- Ganancia de información: 0.2781
 
-Uso de Datos (agrupado en Bajo, Medio, Alto)
-Ganancia: 0.1245
+c) Uso de datos (agrupado: Bajo ≤3GB, Medio 3.1–6GB, Alto >6GB)
+- Ganancia de información: 1.0000
 
-5. CONCLUSIÓN
-El atributo más informativo es Línea Fija, con una ganancia de 0.3219.
-Esto indica que los clientes con línea fija tienen mayor probabilidad de aceptar la oferta.
+3. CONSTRUCCIÓN DEL ÁRBOL DE DECISIÓN
 
-FIN DEL INFORME
+Nodo raíz: Uso de datos
+├── Bajo (≤3GB): No acepta
+├── Medio (3.1–6GB): subdividir por Línea Fija
+│   ├── Línea Fija = Sí: Sí acepta
+│   └── Línea Fija = No: No acepta
+└── Alto (>6GB): Sí acepta
+
+4. CONCLUSIÓN
+
+El atributo más informativo para comenzar el árbol es "Uso de datos", ya que proporciona
+la mayor ganancia de información (1.0000). Permite separar claramente los casos en los
+que el cliente acepta o no la oferta. En el grupo intermedio, el atributo "Línea Fija" permite 
+una subdivisión efectiva. Este árbol puede utilizarse para predecir la aceptación de la
+oferta en función del uso mensual de datos y si el cliente posee línea fija.
