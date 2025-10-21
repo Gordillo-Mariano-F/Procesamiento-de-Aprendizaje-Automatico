@@ -20,7 +20,6 @@ def ganancia_info(total_p, total_n, divisiones):
     ganancia = entropia_total - entropia_ponderada
     return entropia_total, entropia_ponderada, ganancia
 
-
 # 1. Cargar los datos
 data = pd.DataFrame({
     "Edad": [24, 38, 29, 45, 52, 33, 41, 27, 36, 31],
@@ -29,53 +28,45 @@ data = pd.DataFrame({
     "Acepta": ["No", "Sí", "No", "Sí", "Sí", "No", "Sí", "No", "Sí", "No"]
 })
 
-print("=== Conjunto de datos ===")
-print(data)
-
-
 # 2. Entropía del conjunto original
 p_total = (data["Acepta"] == "Sí").sum()
 n_total = (data["Acepta"] == "No").sum()
 
-print("\n=== 1. ENTROPÍA DEL CONJUNTO ORIGINAL ===")
+print("=== 1. ENTROPÍA DEL CONJUNTO ORIGINAL ===")
 print(f"Positivos (Sí): {p_total}, Negativos (No): {n_total}")
 print(f"Entropía total: {entropia(p_total, n_total):.4f}")
-
 
 # 3. Evaluar atributos
 print("\n=== 2. GANANCIA DE INFORMACIÓN POR ATRIBUTO ===")
 
-# --- Agrupación por Edad ---
+# Edad agrupada
 bins_edad = [0, 30, 50, 100]
 labels_edad = ["Joven", "Adulto", "Mayor"]
 data["EdadGrupo"] = pd.cut(data["Edad"], bins=bins_edad, labels=labels_edad)
 
 tabla_edad = data.groupby("EdadGrupo", observed=False)["Acepta"].value_counts().unstack().fillna(0)
-print("\n-- Edad agrupada --")
-print(tabla_edad)
-
 divisiones_edad = [(row.get("Sí", 0), row.get("No", 0)) for _, row in tabla_edad.iterrows()]
 _, _, ganancia_edad = ganancia_info(p_total, n_total, divisiones_edad)
+print("-- Edad agrupada --")
+print(tabla_edad)
 print(f"Edad → Ganancia: {ganancia_edad:.4f}")
 
-# --- Línea fija ---
+# Línea fija
 tabla_linea = data.groupby("LineaFija", observed=False)["Acepta"].value_counts().unstack().fillna(0)
-print("\n-- Línea fija --")
-print(tabla_linea)
-
 divisiones_linea = [(row.get("Sí", 0), row.get("No", 0)) for _, row in tabla_linea.iterrows()]
 _, _, ganancia_linea = ganancia_info(p_total, n_total, divisiones_linea)
+print("\n-- Línea fija --")
+print(tabla_linea)
 print(f"Línea fija → Ganancia: {ganancia_linea:.4f}")
 
-# --- Agrupación por uso de datos ---
+# Uso de datos agrupado
 bins_uso = [0, 3, 6, 100]
 labels_uso = ["Bajo", "Medio", "Alto"]
 data["UsoGrupo"] = pd.cut(data["UsoGB"], bins=bins_uso, labels=labels_uso)
 
 tabla_uso = data.groupby("UsoGrupo", observed=False)["Acepta"].value_counts().unstack().fillna(0)
-print("\n-- Uso de datos agrupado --")
-print(tabla_uso)
-
 divisiones_uso = [(row.get("Sí", 0), row.get("No", 0)) for _, row in tabla_uso.iterrows()]
 _, _, ganancia_uso = ganancia_info(p_total, n_total, divisiones_uso)
+print("\n-- Uso de datos agrupado --")
+print(tabla_uso)
 print(f"Uso de datos → Ganancia: {ganancia_uso:.4f}")
