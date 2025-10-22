@@ -68,3 +68,4 @@ print(conf_matrix)
 print("\n Predicciones para nuevas noticias:")
 for noticia, etiqueta in zip(nuevas_noticias, predicciones_nuevas):
     print(f"• Noticia: '{noticia}' → Predicción: {etiqueta}")
+
